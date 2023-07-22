@@ -1,25 +1,19 @@
-import React,{useState} from 'react'
-import BlogPost from './BlogPost'
-
+import React, { useState } from "react";
+import BlogPost from "./BlogPost";
+import UserInput from "./UserInput";
 
 const Blog = () => {
-    
-   
-    let [listOfPosts, setListOfPosts] = useState([])
+  let [listOfPosts, setListOfPosts] = useState([]);
 
-    
-    function addToList(newPost){
-        setListOfPosts(previousPosts =>{
-            return [newPost, ...previousPosts]
-        })
-    }
+  function addToList(newPost) {
+    setListOfPosts((previousPosts) => {
+      return [newPost, ...previousPosts];
+    });
+  }
 
   return (
     <>
-
-
-    {
-    /* 
+      {/* 
     #################################################################################################################################################################################### HOMEWORK ####################################################################################################################################################################
     
     
@@ -32,22 +26,20 @@ const Blog = () => {
     Optional TODO: Add dates to the posts
     */}
 
-    <BlogPost addToList={addToList}/>
+      <BlogPost addToList={addToList} />
 
-
-    {listOfPosts.map(post =>{
-        return(
-            <>
-            
-            <h2>{post.title}</h2>
-            <h3>{post.author}</h3>
+      {listOfPosts.map((post) => {
+        return (
+          <>
+            <h2>{post.author}</h2>
+            <h3>{post.title}</h3>
             <p>{post.content}</p>
             <hr />
-            </>
-        )
-    })}
+          </>
+        );
+      })}
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

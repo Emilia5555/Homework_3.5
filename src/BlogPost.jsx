@@ -1,37 +1,45 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import UserInput from "./UserInput";
 
+const BlogPost = ({ addToList }) => {
+  let [author, setAuthor] = useState("");
+  let [title, setTitle] = useState("");
+  let [content, setContent] = useState("");
 
-const BlogPost = ({addToList}) => {
+  function getAuthor(author) {
+    setAuthor(author);
+  }
 
-   
-    let [author,setAuthor] = useState('')
-    let [title,setTitle] = useState('')
-    let [content,setContent] = useState('')
+  function getTitle(title) {
+    setTitle(title);
+  }
 
+  function getContent(content) {
+    setContent(content);
+  }
 
-    function handleSubmit(e){
-        e.preventDefault()
-        let post = {author, title, content}
-        addToList(post)
-        
-       
-        setAuthor('')
-        setContent('')
-        setTitle('')
+  function handleSubmit(e) {
+    e.preventDefault();
+    let post = { author, title, content };
+    addToList(post);
 
-    }
+    setAuthor("");
+    setContent("");
+    setTitle("");
+  }
 
   return (
     <>
-    
-    <form onSubmit={handleSubmit}>
-        
+      <UserInput
+        getAuthor={getAuthor}
+        getTitle={getTitle}
+        getContent={getContent}
+      ></UserInput>
+      <form onSubmit={handleSubmit}>
         <button>Submit Post</button>
-
-    </form>
-    
+      </form>
     </>
-  )
-}
+  );
+};
 
-export default BlogPost
+export default BlogPost;
